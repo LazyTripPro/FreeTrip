@@ -11,6 +11,9 @@ var Cookies = require('cookies');
 var User = require('./models/User');
 //创建app应用 ==> NodeJS Http.createServer();
 var app = express();
+var assert = require('assert');
+var Band = require('band')
+var q = require('q')
 //设置静态文件托管
 //当用户访问Url 以/public开始，那么直接返回对应 _dirname + '/public'下的文件
 // app.use(express.static(path.join(__dirname,'public')));
@@ -77,7 +80,12 @@ app.use('/api', require('./routers/api'));
 
 
 //监听Http请求  XXX端口的信息数据
-mongoose.connect('mongodb://localhost:27018/myBlog', function(err) {
+var uri = 'mongodb://localhost:27017/myBlog';
+
+// Use bluebird
+mongoose.Promise = require('bluebird');
+mongoose.Promise = require('q').Promise;
+mongoose.createConnection('mongodb://localhost:27017/myBlog', function(err) {
     if (err) {
         console.log('数据库连接失败');
         return;
@@ -87,5 +95,10 @@ mongoose.connect('mongodb://localhost:27018/myBlog', function(err) {
         console.log('Server is running at http://localhost:8081');
     }
 });
+// Band = db.model('band-promises', { name: String });
+
+// db.on('open', function() {
+//   assert.equal(Band.collection.findOne().constructor, require('bluebird'));
+// });
 // app.listen(8081, 'localhost');
 // console.log('Server is running at http://localhost:8081');
