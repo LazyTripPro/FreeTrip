@@ -2,12 +2,12 @@
  * Created by rockey on 2018/2/3.
  */
 
-var mongoose = require('mongoose');
+const {Schema} = require('mongoose')
 
 //分类表结构
-var schema = new mongoose.Schema({
+let schema = new Schema({
     //分类名称
-    name: String
+    name: {type: String}
 });
 
 module.exports = schema;

@@ -4,5 +4,6 @@
 
 var mongoose = require('mongoose');
 var categoriesSchema = require('../schemas/categories');
+var db = mongoose.createConnection('mongodb://localhost:27017/myBlog');
 
-module.exports = mongoose.model('Category',categoriesSchema);
+module.exports = db.model('Category',categoriesSchema);

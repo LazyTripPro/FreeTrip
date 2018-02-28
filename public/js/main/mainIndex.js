@@ -60,7 +60,7 @@ function uploadRegisterDataFunc() {
         //采用 jQuery AJax方式上传
         $.ajax({
             type: 'post',
-            url: 'api/user/register',
+            url: '/api/user/register',
             data: {
                 username: username,
                 password: password,

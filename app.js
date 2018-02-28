@@ -75,30 +75,14 @@ app.use(function(req, res, next) {
 //根据不同功能划分模块
 app.use('/', require('./routers/main'));
 app.use('/admin', require('./routers/admin'));
-// app.use('/user', require('./routers/users'));
+app.use('/user', require('./routers/users'));
 app.use('/api', require('./routers/api'));
 
 
-//监听Http请求  XXX端口的信息数据
-var uri = 'mongodb://localhost:27017/myBlog';
-
-// Use bluebird
-mongoose.Promise = require('bluebird');
-mongoose.Promise = require('q').Promise;
-mongoose.createConnection('mongodb://localhost:27017/myBlog', function(err) {
-    if (err) {
-        console.log('数据库连接失败');
-        return;
-    } else {
-        console.log('数据库连接成功');
-        app.listen(8081, 'localhost');
-        console.log('Server is running at http://localhost:8081');
-    }
-});
 // Band = db.model('band-promises', { name: String });
 
 // db.on('open', function() {
 //   assert.equal(Band.collection.findOne().constructor, require('bluebird'));
 // });
-// app.listen(8081, 'localhost');
+app.listen(8088, 'localhost');
 // console.log('Server is running at http://localhost:8081');

@@ -9,6 +9,6 @@
 
 var mongoose = require('mongoose');
 var contentSchema = require('../schemas/contents');
+var db = mongoose.createConnection('mongodb://localhost:27017/myBlog');
 
-
-module.exports = mongoose.model('Content', contentSchema);
+module.exports = db.model('Content', contentSchema);

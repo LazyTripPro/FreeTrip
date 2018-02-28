@@ -17,6 +17,7 @@ var Category = require('../models/Category');
 var User = require('../models/User');
 var Content = require('../models/Content');
 
+
 var data;
 //处理通用数据
 router.use(function(req, res, next) {
@@ -25,7 +26,7 @@ router.use(function(req, res, next) {
         categories: []
     };
     Category.find().then(function(categories) {
-        // console.log(categories);
+        console.log(categories);
         data.categories = categories;
         // //读取内容的总数
         // return Content.where(whereStr).count();
@@ -35,7 +36,7 @@ router.use(function(req, res, next) {
 //程序主入口 Login /register
 
 router.get('/', function(req, res, next) {
-    // console.log('渲染首页模板的用户数据 ' + JSON.stringify(req.userInfo));
+    console.log('渲染首页模板的用户数据 ' + JSON.stringify(req.userInfo));
 
     var reqPage = Number((req.query.page) === undefined ? 0 : req.query.page);
     data.category = req.query.category || '';

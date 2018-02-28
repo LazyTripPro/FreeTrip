@@ -41,7 +41,6 @@ routerApi.post('/user/register', function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
     var repassword = req.body.repassword;
-
     //用户名判空
     if (username === '') {
         responseData.code = '1';

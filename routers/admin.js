@@ -31,10 +31,10 @@ var Content = require('../models/Content'); //内容模型
 //
 routerAdmin.use(function(req, res, next) {
     //对进入用户身份进行验证
-    if (!req.userInfo.isAdmin) {
-        res.send('你不是管理员，不能访问后台管理！');
-        return;
-    }
+    // if (!req.userInfo.isAdmin) {
+    //     res.send('你不是管理员，不能访问后台管理！');
+    //     return;
+    // }
     next();
 });
 

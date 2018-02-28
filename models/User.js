@@ -5,10 +5,11 @@
 
 var mongoose = require('mongoose');
 var userSchema = require('../schemas/users');
+var db = mongoose.createConnection('mongodb://localhost:27017/myBlog');
 
 /*
  *   User
  *
  **/
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = db.model('User', userSchema);
