@@ -101,7 +101,7 @@ function loginFunc() {
         //采用 jQuery AJax方式上传
         $.ajax({
             type: 'post',
-            url: 'api/user/login',
+            url: '/api/user/login',
             data: {
                 username: username,
                 password: password
@@ -109,8 +109,8 @@ function loginFunc() {
             dataType: 'json',
             success: function (resData) {
                 if (resData.code === '0') {
-                    // alert(resData.message);
-                    window.location.reload();
+                    alert(resData.message);
+                    // window.open('/');
                 }
                 else {
                     alert(resData.message);
@@ -132,7 +132,7 @@ function logoutFunc() {
     //
     $.ajax({
         type: 'Get',
-        url: 'api/user/logout',
+        url: '/api/user/logout',
         data: {},
         dataType: 'json',
         success: function (resData) {
