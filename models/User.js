@@ -1,15 +1,25 @@
+'use strict'
+
 /**
- * Created by rockey on 2018/2/13.
+ * Created by rockey on 2018/3/6.
  */
-
-
 var mongoose = require('mongoose');
-var userSchema = require('../schemas/users');
-var db = mongoose.createConnection('mongodb://localhost:27017/myBlog');
 
-/*
- *   User
- *
- **/
+//用户表结构
+//此处只定义了 User Schema 然后在用户models中引用
+var schema = new mongoose.Schema({
+  username: String,
+  password: String,
+  //是否是超级管理员
+  isSuperAdmin: {
+    type: Boolean,
+    default: false
+  },
+  //是否是管理员
+  isAdmin: {
+    type: Boolean,
+    default: false
+  }
+});
 
-module.exports = db.model('User', userSchema);
+module.exports = schema;

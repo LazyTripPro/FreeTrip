@@ -1,9 +1,14 @@
+'use strict'
+
 /**
- * Created by rockey on 2018 / 2 / 13.
+ * Created by rockey on 2018 / 3 / 6.
  */
+const {Schema} = require('mongoose')
 
-var mongoose = require('mongoose');
-var categoriesSchema = require('../schemas/categories');
-var db = mongoose.createConnection('mongodb://localhost:27017/myBlog');
+//分类表结构
+let schema = new Schema({
+    //分类名称
+  name: {type: String}
+});
 
-module.exports = db.model('Category',categoriesSchema);
+module.exports = schema;
