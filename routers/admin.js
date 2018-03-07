@@ -32,16 +32,17 @@ const {User, Category, Content} = require('../models')
 //
 routerAdmin.use(function(req, res, next) {
   //对进入用户身份进行验证
-  // if (!req.userInfo.isAdmin) {
-  //   res.send('你不是管理员，不能访问后台管理！')
-  //   return
-  // }
+  if (!req.userInfo.isAdmin) {
+    res.send('你不是管理员，不能访问后台管理！')
+    return
+  }
   next()
 })
 
 //管理首页
 routerAdmin.get('/', function(req, res, next) {
   // res.send('后台管理首页')
+  
   res.render('admin/adminIndex', {
     userInfo: req.userInfo
   })

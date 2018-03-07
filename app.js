@@ -8,12 +8,9 @@ var path = require('path');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser'); //中间件/可从request中获取body数据
 var Cookies = require('cookies');
-var User = require('./models/User');
+const {User, Category, Content} = require('./models/')
 //创建app应用 ==> NodeJS Http.createServer();
 var app = express();
-var assert = require('assert');
-var Band = require('band')
-var q = require('q')
 //设置静态文件托管
 //当用户访问Url 以/public开始，那么直接返回对应 _dirname + '/public'下的文件
 // app.use(express.static(path.join(__dirname,'public')));
@@ -38,37 +35,37 @@ app.set('view engine', 'html');
 
 //在开发中取消模板缓存便于调试
 swig.setDefaults({
-    cache: false
+  cache: false
 });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: true
+  extended: true
 }));
 //设置cookie
 app.use(function(req, res, next) {
-    req.cookies = new Cookies(req, res);
-    // console.log('这里打印服务端返回客户端的cookies  ' + req.cookies.get('userInfo'));
-    //解析用户登录的cookies信息
-    req.userInfo = {};
-    if (req.cookies.get('userInfo')) {
-        try {
-            req.userInfo = JSON.parse(req.cookies.get('userInfo'));
-            //获取当前登录用户的类型//是否是管理员
-            //只有超级管理员可以进行//用户管理//普通用户//只能进行模块//内容//留言等管理
-            User.findById(req.userInfo._id).then(function(userInfo) {
-                req.userInfo.isAdmin = Boolean(userInfo.isAdmin);
-                req.userInfo.isSuperAdmin = Boolean(userInfo.isSuperAdmin);
-                next();
-            });
-        } catch (e) {
-            // console.log('Cookies have some Error');
-            // next();
-        }
-    } else {
-        // console.log('不存在用户cookie 数据！');
+  req.cookies = new Cookies(req, res);
+  // console.log('这里打印服务端返回客户端的cookies  ' + req.cookies.get('userInfo'));
+  // 解析用户登录的cookies信息
+  req.userInfo = {};
+  if (req.cookies.get('userInfo')) {
+    try {
+      req.userInfo = JSON.parse(req.cookies.get('userInfo'));
+      //获取当前登录用户的类型//是否是管理员
+      //只有超级管理员可以进行//用户管理//普通用户//只能进行模块//内容//留言等管理
+      User.findById(req.userInfo._id).then(function(userInfo) {
+        req.userInfo.isAdmin = Boolean(userInfo.isAdmin);
+        req.userInfo.isSuperAdmin = Boolean(userInfo.isSuperAdmin);
         next();
+      });
+    } catch (e) {
+      // console.log('Cookies have some Error');
+      // next();
     }
+  } else {
+    // console.log('不存在用户cookie 数据！');
+    next();
+  }
 });
 
 //路由控制
@@ -77,12 +74,6 @@ app.use('/', require('./routers/main'));
 app.use('/admin', require('./routers/admin'));
 app.use('/user', require('./routers/users'));
 app.use('/api', require('./routers/api'));
-
-
-// Band = db.model('band-promises', { name: String });
-
-// db.on('open', function() {
-//   assert.equal(Band.collection.findOne().constructor, require('bluebird'));
-// });
 app.listen(8088, 'localhost');
+
 // console.log('Server is running at http://localhost:8081');

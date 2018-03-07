@@ -25,7 +25,6 @@ router.use(function(req, res, next) {
     categories: []
   }
   Category.find().then(function(categories) {
-    console.log(categories)
     data.categories = categories
     // //读取内容的总数
     // return Content.where(whereStr).count()

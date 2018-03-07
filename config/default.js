@@ -4,7 +4,7 @@ module.exports = {
     mongodb: [
         {
         name: 'db',
-        url: process.env.MONGO_URL || 'mongodb://localhost/enterprise-dev',
+        url: process.env.MONGO_URL || 'mongodb://localhost/myblog',
         options: {}
         }
     ]

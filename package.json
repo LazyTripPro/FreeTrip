@@ -9,15 +9,13 @@
     "author": "rockey",
     "license": "ISC",
     "dependencies": {
-        "assert": "^1.4.1",
-        "band": "0.0.0",
         "bluebird": "^3.5.1",
         "body-parser": "^1.17.2",
+        "config": "^1.30.0",
         "cookies": "^0.7.0",
         "express": "^4.15.3",
         "markdown": "^0.5.0",
         "mongoose": "^4.10.2",
-        "q": "^1.5.1",
         "swig": "^1.4.2"
     }
 }
