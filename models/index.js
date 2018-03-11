@@ -1,6 +1,6 @@
 'use strict'
 
-const db = require('../config/initializer/dataBase').get('db')
+const db = require('../config/initializer/').dbs.get('db')
 
 function staticMethodHelper (schema) {
   schema.statics.upsert = function (query, update, opts = upsertOpts) {

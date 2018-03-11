@@ -167,7 +167,6 @@ routerAdmin.post('/category/add', function(req, res, next) {
       })
     })
   }
-
 })
 //分类编辑
 routerAdmin.get('/category/edit', function(req, res) {
