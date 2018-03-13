@@ -1,4 +1,4 @@
-function list(req, res, next) {
+const ListService = require('../../service/admin/user/list')
   // 从数据库中读取所有用户数据
   /*
    *   sort() 可对字段指定排序 传值 -1降序 1 升序
@@ -14,30 +14,13 @@ function list(req, res, next) {
    * */
   // let page = 1
   // console.log(req.query.page)
-  let reqPage = Number((req.query.page) === undefined ? 0 : req.query.page)
-  // console.log(reqPage)
-  let page = reqPage <= 0 ? 1 : reqPage
-  let limit = 2
-  let pages = 0
-  let skip = (page - 1) * limit
-  //
-  User.count().then(function(count) {
-    // console.log(count)
-    //总页数
-    pages = Math.ceil(count / limit)
-    //
-    User.find().sort({
-    _id: -1
-    }).limit(limit).skip(skip).then(function(users) {
-    // console.log(users)
-    res.render('admin/user_index', {
-      userInfo: req.userInfo,
-      users: users,
-      count: count,
-      limit: limit,
-      pages: pages,
-      page: page
-    })
-    })
-  })
+module.exports.list = async (ctx) => {
+  const opts = ctx.query
+  let s = new ListService(opts, ctx)
+  await s.perform()
+  await ctx.render('admin/user_index', {users: s.result.data})  
 }
+// function list(req, res, next) {
+
+
+// }

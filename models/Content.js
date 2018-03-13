@@ -7,9 +7,9 @@
  *   内容相关数据模型
  *
  * */
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var schema = new mongoose.Schema({
+let schema = new mongoose.Schema({
   //关联字段  // 分类的ID
   category: {
     //类型
