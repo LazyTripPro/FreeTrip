@@ -1,4 +1,6 @@
-const router = require('koa-router')
+const router = require('koa-router')({
+  prefix: '/admin'
+})
 const user = require('../controller/admin/user')
 
 /**
@@ -440,4 +442,4 @@ routerAdmin.get('/logout', function(req, res) {
   res.render('main/mainIndex', {})
 })
 
-module.exports = routerAdmin
+module.exports = router

@@ -18,7 +18,7 @@ module.exports.list = async (ctx) => {
   const opts = ctx.query
   let s = new ListService(opts, ctx)
   await s.perform()
-  await ctx.render('admin/user_index', {users: s.result.data})  
+  ctx.render('index1', {users: s.result.data})  
 }
 // function list(req, res, next) {
 

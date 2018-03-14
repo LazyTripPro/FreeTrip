@@ -14,8 +14,18 @@
         "config": "^1.30.0",
         "cookies": "^0.7.0",
         "express": "^4.15.3",
+        "ioredis": "^3.2.2",
+        "koa": "^2.5.0",
+        "koa-bodyparser": "^4.2.0",
+        "koa-helmet": "^3.3.0",
+        "koa-json": "^2.0.2",
+        "koa-jwt": "^3.3.1",
+        "koa-router": "^7.4.0",
+        "koa-swig": "^2.2.1",
         "markdown": "^0.5.0",
         "mongoose": "^4.10.2",
+        "mongoose-paginate": "^5.0.3",
+        "require-dir": "^1.0.0",
         "swig": "^1.4.2"
     }
 }

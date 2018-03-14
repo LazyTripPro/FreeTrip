@@ -1,6 +1,7 @@
 'use strict'
 
 const db = require('../config/initializer/').dbs.get('db')
+const mongoosePaginate = require('mongoose-paginate')
 
 function staticMethodHelper (schema) {
   schema.statics.upsert = function (query, update, opts = upsertOpts) {
@@ -22,6 +23,7 @@ function set (schema) {
   schema.set('_id', true)
   schema.set('toObject', {getters: true, virtuals: true, minimize: false, id: true})
   schema.set('toJSON', {getters: true, virtuals: true, minimize: false, id: true})
+  schema.plugin(mongoosePaginate)
   return staticMethodHelper(schema)
 }
 

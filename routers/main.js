@@ -1,5 +1,6 @@
-'use strict'
-
+const routers = require('koa-router')({
+  prefix: '/main'
+})
 /**
  * Created by rockey on 2016/11/13.
  * reconstruction by rockey on 2018/3/6
@@ -92,4 +93,4 @@ router.get('/view', function(req, res, next) {
   })
 })
 
-module.exports = router
+module.exports = routers

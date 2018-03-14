@@ -1,5 +1,6 @@
-'use strict'
-
+const router = require('koa-router')({
+  prefix: '/api'
+})
 /**
  * Created by rockey on 2016/11/13.
  * reconstruction by rockey on 2018/3/6 
@@ -175,4 +176,4 @@ routerApi.post('/comment/post', function(req, res, next) {
   })
 })
 
-module.exports = routerApi
+module.exports = router
