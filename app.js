@@ -34,7 +34,6 @@ app.context.render = co.wrap(render({
   ext: 'html',
   writeBody: false
 }))
-
 // app.use(async ctx => ctx.body = await ctx.render('admin/user_index'))
 
 //设置cookie
