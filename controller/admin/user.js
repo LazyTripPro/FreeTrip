@@ -18,7 +18,9 @@ module.exports.list = async (ctx) => {
   const opts = ctx.query
   let s = new ListService(opts, ctx)
   await s.perform()
-  ctx.render('admin/user_index.html', {users: s.result.data})  
+  let code = ctx.cookies.get('userInfo')
+  code = JSON.parse(code)
+  ctx.body = await ctx.render('admin/user_index', code)
 }
 // function list(req, res, next) {
 

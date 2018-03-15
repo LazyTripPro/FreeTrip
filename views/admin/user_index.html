@@ -2,14 +2,39 @@
 <head>
     <meta charset="UTF-8">
     <title>后台管理</title>
-    <link rel="stylesheet" href="../../public/plug-in/bootstrap-3.3.7/css/bootstrap.css">
-    <link rel="stylesheet" href="../../public/plug-in/bootstrap-3.3.7/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/plug-in/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="/plug-in/bootstrap-3.3.7/css/bootstrap-theme.css">
 </head>
 <body>
-    <div>
-        {{ user._id.toString() }}
-        {{ user.username }}
-        {{ user.password }}
-    </div>
+    <div class="jumbotron">
+        <!--用户列表-->
+        <ol class="breadcrumb">
+            <li><a href="#">管理首页</a></li>
+            <li><span></span>用户列表</li>
+        </ol>
+        <hr>
+        <h3>用户列表:</h3>
+        <hr>
+        <table class="table table-hover table-striped">
+            <!-- 可用 tr>th*3 生成对应行列 -->
+            <tr>
+                <th>ID</th>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>是否是超级管理员</th>
+            </tr>
+            <!---->
+            <tr>
+                <td>{{ _id.toString() }}</td>
+                <td>{{ username }}</td>
+                <td>{{ password }}</td>
+                <td>
+                    {% if user.isSuperAdmin %}
+                    是
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </div>    
 </body>
 </html>
