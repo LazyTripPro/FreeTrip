@@ -30,7 +30,7 @@ app.use(convert(logger()))
 app.context.render = co.wrap(render({
   root: path.join(__dirname, 'views'),
   autoescape: true,
-  cache: 'memory', // disable, set to false 
+  cache: false, // disable, set to false 
   ext: 'html',
   writeBody: false
 }))

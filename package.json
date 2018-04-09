@@ -6,9 +6,9 @@
     "scripts": {
         "start": "npm run dev",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "node_modules/.bin/nodemon --inspect app.js",
+        "dev": "node_modules/.bin/nodemon -w ./",
         "stop": "forever stop app.js",
-        "fdev": "forever -c nodemon -w app.js"
+        "fdev": "forever -c 'node_modules/.bin/nodemon' -w app.js --exitcrash"
     },
     "author": "rockey",
     "license": "ISC",
