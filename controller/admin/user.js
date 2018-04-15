@@ -4,6 +4,10 @@ module.exports.list = async (ctx) => {
   let s = new ListService(opts, ctx)
   await s.perform()
   let code = ctx.cookies.get('userInfo')
-  code = JSON.parse(code)
+  if (!code) {
+    ctx.cookies.set('userInfo',{})
+    code = ctx.cookies.get('userInfo')
+  }
+  // code = JSON.parse(code)
   ctx.body = await ctx.render('admin/user_index', code)
 }

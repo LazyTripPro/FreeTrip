@@ -27,6 +27,6 @@ function set (schema) {
   return staticMethodHelper(schema)
 }
 
-module.exports.Content = db.model('Content', set(require('./Content')))
-module.exports.User = db.model('User', set(require('./User')))
-module.exports.Category = db.model('Category', set(require('./Category')))
+module.exports.Content = db.model('Content', set(require('./content')))
+module.exports.User = db.model('User', set(require('./user')))
+module.exports.Category = db.model('Category', set(require('./category')))
